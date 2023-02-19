@@ -3,13 +3,15 @@ import 'package:counter/modules/counter/data_sources/counter_data.dart';
 class CounterRepo{
   CounterDataSource ? counterDataSource;
   CounterRepo(this.counterDataSource);
-  void setIncrementCounter(counter){
-   counterDataSource!.incrementCounterValue(value:counter);
+  int? setIncrementCounter(){
+   counterDataSource!.incrementCounterValue();
+   return counterDataSource!.counter;
   }
-  void setDecrementCounter(counter){
-    counterDataSource!.decrementCounterValue(value:counter);
+  int? setDecrementCounter(){
+    counterDataSource!.decrementCounterValue();
+    return counterDataSource!.counter;
   }
   int? getCounter(){
-    return counterDataSource!.getCounterValue();
+    return counterDataSource!.counter;
   }
 }
