@@ -4,12 +4,12 @@ class CounterRepo{
   CounterDataSource ? counterDataSource;
   CounterRepo(this.counterDataSource);
   void setIncrementCounter(counter){
-   counterDataSource!.setCounterValue(key: 'counter', value:counter);
+   counterDataSource!.incrementCounterValue(value:counter);
   }
   void setDecrementCounter(counter){
-    counterDataSource!.setCounterValue(key: 'counter', value:counter);
+    counterDataSource!.decrementCounterValue(value:counter);
   }
   int? getCounter(){
-    return counterDataSource!.getCounterValue(key:'counter');
+    return counterDataSource!.getCounterValue();
   }
 }

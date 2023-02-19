@@ -7,18 +7,17 @@ class CounterCubit extends Cubit<CounterState> {
   CounterRepo counterRepo;
   int counter=0;
   void increment(){
-     counter=counter+1;
     counterRepo.setIncrementCounter(counter);
+    getCounter();
     emit(IncrementState());
   }
   void decrement(){
-    counter=counter-1;
     counterRepo.setDecrementCounter(counter);
+    getCounter();
     emit(DecrementState());
   }
-  int getCounter(){
+  void getCounter(){
     counter = counterRepo.getCounter()!;
     emit(GetCounterState());
-    return counter;
   }
 }
