@@ -8,7 +8,7 @@ class  DependencyInjection {
  static final sl=GetIt.instance;
  static void initId(SharedPreferences sharedPreferences){
     sl.registerSingleton(sharedPreferences);
-    sl.registerSingleton(CounterDataSource(sl.get<SharedPreferences>()));
+    sl.registerSingleton(CounterDataSource(sl.get()));
     sl.registerSingleton(CounterRepo(sl.get()));
     sl.registerFactory(() => CounterCubit(sl.get()));
   }
