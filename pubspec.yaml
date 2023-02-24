@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc:
   shared_preferences:
   delayed_widget:
+  get_it:
 
 dev_dependencies:
   flutter_test:

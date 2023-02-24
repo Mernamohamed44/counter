@@ -1,6 +1,5 @@
+import 'package:counter/di.dart';
 import 'package:counter/modules/counter/blocs/counter_bloc.dart';
-import 'package:counter/modules/counter/data_sources/counter_data.dart';
-import 'package:counter/modules/counter/repo/counter_repo.dart';
 import 'package:counter/modules/counter/ui/counter_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +8,8 @@ SharedPreferences? sharedPreferences;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   sharedPreferences=await SharedPreferences.getInstance();
+  DependencyInjection.initId(sharedPreferences!);
+
   runApp(const CounterApp());
 }
 
@@ -19,11 +20,7 @@ class CounterApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
-        create: (BuildContext context) => CounterCubit(CounterRepo(
-           CounterDataSource(
-             sharedPreferences
-           )
-        )),
+        create: (BuildContext context) => DependencyInjection.sl.get<CounterCubit>(),
         child: CounterScreen(),
       ),
     );
